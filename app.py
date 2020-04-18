@@ -154,6 +154,10 @@ app.layout = html.Div(
                 html.A(html.Img(src='assets/linkedin-3-32.png',
                                 style={"padding": "10px"}),
                        href="https://www.linkedin.com/in/boumajeroen/",
+                       target="_blank"),
+                html.A(html.Img(src='assets/paypal-32.png',
+                                style={"padding": "10px"}),
+                       href="https://www.paypal.me/jerbouma",
                        target="_blank")
 
             ], className="left columns"),
