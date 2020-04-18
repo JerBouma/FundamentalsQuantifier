@@ -650,4 +650,5 @@ def display_financial_statement_growth_graphs(companies, data_type, financial_st
 
 
 if __name__ == '__main__':
-    app.run_server(debug=True)
+    app.title = "Fundamentals Quantifier"
+    app.run_server(debug=False)
