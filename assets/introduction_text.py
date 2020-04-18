@@ -21,10 +21,14 @@ introduction_text = '''
     captured over set time intervals.
     
     Thanks to Dash and Plotly, graphs are fully interactive. For example, by clicking the tickers in the legenda,
-    you can remove (and add) companies from each graph as well as zoom into the graph by making a selection. Data is
-    collected through the package [FundamentalAnalysis](https://github.com/JerBouma/FundamentalAnalysis). The source
-    code for this project can be found [here](https://github.com/JerBouma/FundamentalAnalysis). Note that
-    I am not responsible for any investment loss (or gain) you make thanks to this interface.
+    you can remove (and add) companies from each graph.  Data is collected through the package
+    [FundamentalAnalysis](https://github.com/JerBouma/FundamentalAnalysis) and the source code of this project can
+    be found on GitHub [here](https://github.com/JerBouma/FundamentalsQuantifier). Note that I am not responsible
+    for any investment loss (or gain) you make thanks to this interface.
+    
+    Feedback and contribution is very much appreciated, please visit either of the above links and create an
+    Issues report or Pull request. If you are missing an important feature, please also create an Issues report or
+    send me an email which address can be found [here](https://github.com/JerBouma).
     
     Good luck!
     '''
