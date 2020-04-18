@@ -31,6 +31,7 @@ cash_flow_statement_options = create_drop_down_options("cash_flow_statement.json
 financial_statement_growth_options = create_drop_down_options("financial_statement_growth.json", dictionary=False)
 
 app = dash.Dash(__name__)
+app.title = "Fundamentals Quantifier"
 server = app.server
 
 app.layout = html.Div(
@@ -650,5 +651,4 @@ def display_financial_statement_growth_graphs(companies, data_type, financial_st
 
 
 if __name__ == '__main__':
-    app.title = "Fundamentals Quantifier"
     app.run_server(debug=False)
