@@ -154,10 +154,6 @@ app.layout = html.Div(
                 html.A(html.Img(src='assets/linkedin-3-32.png',
                                 style={"padding": "10px"}),
                        href="https://www.linkedin.com/in/boumajeroen/",
-                       target="_blank"),
-                html.A(html.Img(src='assets/paypal-32.png',
-                                style={"padding": "10px"}),
-                       href="https://www.paypal.me/jerbouma",
                        target="_blank")
 
             ], className="left columns"),
@@ -171,7 +167,7 @@ app.layout = html.Div(
                 html.Div(id="key_metrics_container"),
                 html.Div(id="ratios_container"),
                 html.Div(id="balance_sheet_container"),
-                html.Div(id="income_statement_container"),
+                html.Div(id="income_statement   _container"),
                 html.Div(id="cash_flow_statement_container"),
                 html.Div(id="financial_statement_growth_container"),
 
