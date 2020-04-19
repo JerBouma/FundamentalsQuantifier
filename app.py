@@ -167,7 +167,7 @@ app.layout = html.Div(
                 html.Div(id="key_metrics_container"),
                 html.Div(id="ratios_container"),
                 html.Div(id="balance_sheet_container"),
-                html.Div(id="income_statement   _container"),
+                html.Div(id="income_statement_container"),
                 html.Div(id="cash_flow_statement_container"),
                 html.Div(id="financial_statement_growth_container"),
 
