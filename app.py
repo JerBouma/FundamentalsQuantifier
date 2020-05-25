@@ -43,6 +43,11 @@ app.layout = html.Div(
                                'text-shadow': '-1px 0 black, 0 1px black,'
                                               '1px 0 black, 0 -1px black'}),
                 html.Div([
+                    html.Summary('API Key'),
+                    dcc.Input(
+                        id="api")], style={'padding-top': '10px'}),
+
+                html.Div([
                     html.Summary('Sectors'),
                     dcc.Dropdown(
                         id="sectors",
@@ -227,14 +232,15 @@ def show_matching_companies(sectors, industries):
 
 @app.callback(
     Output(component_id='company_profile_data', component_property='children'),
-    [Input(component_id="companies", component_property='value')])
-def collect_company_profiles(companies):
+    [Input(component_id="companies", component_property='value'),
+     Input(component_id="api", component_property='value')])
+def collect_company_profiles(companies, api_key):
     if not companies or companies is None:
         return None
 
     company_profiles = {}
     for company in companies:
-        company_profiles[company] = fa.profile(company).to_dict()
+        company_profiles[company] = fa.profile(company, api_key).to_dict()
 
     return json.dumps(company_profiles)
 
@@ -315,14 +321,15 @@ def display_stock_data_graph(companies, data_type, stock_data):
     Output(component_id='key_metrics_data', component_property='children'),
     [Input(component_id="companies", component_property='value'),
      Input(component_id="period", component_property='value'),
-     Input(component_id='key_metrics', component_property='value')])
-def collect_key_metrics_data(companies, period, key_metrics):
+     Input(component_id='key_metrics', component_property='value'),
+     Input(component_id='api', component_property='value')])
+def collect_key_metrics_data(companies, period, key_metrics, api_key):
     if (not companies or companies is None) or key_metrics is None:
         return None
 
     key_metrics_data = {}
     for company in companies:
-        key_metrics_data[company] = fa.key_metrics(company, period).to_dict()
+        key_metrics_data[company] = fa.key_metrics(company, api_key, period=period).to_dict()
 
     return json.dumps(key_metrics_data)
 
@@ -372,14 +379,15 @@ def display_key_metrics_graph(companies, data_type, key_metrics_data,
 @app.callback(
     Output(component_id='ratios_data', component_property='children'),
     [Input(component_id="companies", component_property='value'),
-     Input(component_id='financial_ratios', component_property='value')])
-def collect_ratios_data(companies, financial_ratios):
+     Input(component_id='financial_ratios', component_property='value'),
+     Input(component_id='api', component_property='value')])
+def collect_ratios_data(companies, financial_ratios, api_key):
     if (not companies or companies is None) or financial_ratios is None:
         return None
 
     ratios_data = {}
     for company in companies:
-        ratios_data[company] = fa.financial_ratios(company).to_dict()
+        ratios_data[company] = fa.financial_ratios(company, api_key).to_dict()
 
     return json.dumps(ratios_data)
 
@@ -430,14 +438,15 @@ def display_ratios_graphs(companies, data_type, ratios_data,
     Output(component_id='balance_sheet_data', component_property='children'),
     [Input(component_id="companies", component_property='value'),
      Input(component_id="period", component_property='value'),
-     Input(component_id='balance_sheet_statement', component_property='value')])
-def collect_balance_sheet_statement_data(companies, period, balance_sheet_statement):
+     Input(component_id='balance_sheet_statement', component_property='value'),
+     Input(component_id='api', component_property='value')])
+def collect_balance_sheet_statement_data(companies, period, balance_sheet_statement, api_key):
     if (not companies or companies is None) or balance_sheet_statement is None:
         return None
 
     balance_sheet_statement_data = {}
     for company in companies:
-        balance_sheet_statement_data[company] = fa.balance_sheet_statement(company, period).to_dict()
+        balance_sheet_statement_data[company] = fa.balance_sheet_statement(company, api_key, period=period).to_dict()
 
     return json.dumps(balance_sheet_statement_data)
 
@@ -486,14 +495,15 @@ def display_balance_sheet_statement_graphs(companies, data_type, balance_sheet_d
     Output(component_id='income_statement_data', component_property='children'),
     [Input(component_id="companies", component_property='value'),
      Input(component_id="period", component_property='value'),
-     Input(component_id='income_statement', component_property='value')])
-def collect_income_statement_data(companies, period, income_statement):
+     Input(component_id='income_statement', component_property='value'),
+     Input(component_id='api', component_property='value')])
+def collect_income_statement_data(companies, period, income_statement, api_key):
     if (not companies or companies is None) or income_statement is None:
         return None
 
     income_statement_data = {}
     for company in companies:
-        income_statement_data[company] = fa.income_statement(company, period).to_dict()
+        income_statement_data[company] = fa.income_statement(company, api_key, period=period).to_dict()
 
     return json.dumps(income_statement_data)
 
@@ -542,14 +552,15 @@ def display_income_statement_graphs(companies, data_type, income_statement_data,
     Output(component_id='cash_flow_statement_data', component_property='children'),
     [Input(component_id="companies", component_property='value'),
      Input(component_id="period", component_property='value'),
-     Input(component_id='cash_flow_statement', component_property='value')])
-def collect_cash_flow_statement_data(companies, period, cash_flow_statement):
+     Input(component_id='cash_flow_statement', component_property='value'),
+     Input(component_id='api', component_property='value')])
+def collect_cash_flow_statement_data(companies, period, cash_flow_statement, api_key):
     if (not companies or companies is None) or cash_flow_statement is None:
         return None
 
     cash_flow_statement_data = {}
     for company in companies:
-        cash_flow_statement_data[company] = fa.cash_flow_statement(company, period).to_dict()
+        cash_flow_statement_data[company] = fa.cash_flow_statement(company, api_key, period=period).to_dict()
 
     return json.dumps(cash_flow_statement_data)
 
@@ -598,14 +609,16 @@ def display_cash_flow_statement_graphs(companies, data_type, cash_flow_statement
     Output(component_id='financial_statement_growth_data', component_property='children'),
     [Input(component_id="companies", component_property='value'),
      Input(component_id="period", component_property='value'),
-     Input(component_id='financial_statement_growth', component_property='value')])
-def collect_financial_statement_growth_data(companies, period, financial_statement_growth):
+     Input(component_id='financial_statement_growth', component_property='value'),
+     Input(component_id='api', component_property='value')])
+def collect_financial_statement_growth_data(companies, period, financial_statement_growth, api_key):
     if (not companies or companies is None) or financial_statement_growth is None:
         return None
 
     financial_statement_growth_data = {}
     for company in companies:
-        financial_statement_growth_data[company] = fa.financial_statement_growth(company, period).to_dict()
+        financial_statement_growth_data[company] = fa.financial_statement_growth(company, api_key,
+                                                                                 period=period).to_dict()
 
     return json.dumps(financial_statement_growth_data)
 
