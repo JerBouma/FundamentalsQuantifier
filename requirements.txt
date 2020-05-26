@@ -8,7 +8,7 @@ dash-renderer==1.4.0
 dash-table==4.6.2
 Flask==1.1.2
 Flask-Compress==1.4.0
-FundamentalAnalysis==0.2.0
+FundamentalAnalysis==0.2.2
 future==0.18.2
 gunicorn==20.0.4
 idna==2.9
