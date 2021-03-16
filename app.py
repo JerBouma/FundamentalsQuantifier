@@ -45,7 +45,8 @@ app.layout = html.Div(
                 html.Div([
                     html.Summary('API Key'),
                     dcc.Input(
-                        id="api")], style={'padding-top': '10px', 'width': '100%'}),
+                        id="api", style={'width': '100%'})],
+                    style={'padding-top': '10px'}),
 
                 html.Div([
                     html.Summary('Sectors'),
