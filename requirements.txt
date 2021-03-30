@@ -13,7 +13,7 @@ future==0.18.2
 gunicorn==20.0.4
 idna==2.9
 itsdangerous==1.1.0
-Jinja2==2.11.2
+Jinja2==2.11.3
 MarkupSafe==1.1.1
 numpy==1.18.2
 pandas==1.0.3
